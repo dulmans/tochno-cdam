@@ -1,0 +1,211 @@
+@charset "UTF-8";
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  color: white;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 24px;
+  font-style: normal;
+}
+
+/* Универсальные классы */
+.title {
+  font-family: "Baloo Cyrillic", sans-serif;
+  font-size: 34px;
+  line-height: 28px;
+}
+
+/* ...универсальные классы */
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+      grid-template-areas: "aside header" "aside content";
+  -ms-grid-columns: 240px auto;
+  grid-template-columns: 240px auto;
+  -ms-grid-rows: 90px auto;
+  grid-template-rows: 90px auto;
+}
+
+.header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
+  background-color: rgb(176, 33, 33);
+}
+
+.aside {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: aside;
+  background-color: rgb(102, 116, 187);
+  padding: 35px 30px 100px;
+}
+
+.aside-title, .menu-text {
+  color: white;
+}
+
+.aside-title {
+  text-align: center;
+  cursor: cell;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.menu *:not(:last-child) {
+  margin-bottom: 5px;
+}
+.menu .menu-elem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 13px;
+  overflow: hidden;
+  padding: 16px;
+  -webkit-transition: all 0.05s ease-in;
+  transition: all 0.05s ease-in;
+}
+.menu .menu-elem:hover {
+  background: rgba(133, 144, 201, 0.5);
+  -webkit-box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+}
+.menu .menu-elem:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.menu .menu-elem.active {
+  background: rgb(133, 144, 201);
+  -webkit-box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+}
+.menu .menu-elem .menu-icon {
+  height: auto;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+.menu .menu-elem .menu-icon img {
+  width: 25px;
+  height: auto;
+  margin-right: 28px;
+}
+.menu .menu-elem .menu-text {
+  font-family: "Century Gothic", sans-serif;
+  font-size: 16px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@-webkit-keyframes greenToRed {
+  0% {
+    fill: #7CDAAF;
+  }
+  20% {
+    fill: black;
+  }
+  40% {
+    fill: #7CDAAF;
+  }
+  60% {
+    fill: black;
+  }
+  80% {
+    fill: #7CDAAF;
+  }
+  100% {
+    fill: black;
+  }
+}
+
+@keyframes greenToRed {
+  0% {
+    fill: #7CDAAF;
+  }
+  20% {
+    fill: black;
+  }
+  40% {
+    fill: #7CDAAF;
+  }
+  60% {
+    fill: black;
+  }
+  80% {
+    fill: #7CDAAF;
+  }
+  100% {
+    fill: black;
+  }
+}
+@-webkit-keyframes redToGreen {
+  0% {
+    fill: #E17277;
+  }
+  20% {
+    fill: black;
+  }
+  40% {
+    fill: #E17277;
+  }
+  60% {
+    fill: black;
+  }
+  80% {
+    fill: #E17277;
+  }
+  100% {
+    fill: black;
+  }
+}
+@keyframes redToGreen {
+  0% {
+    fill: #E17277;
+  }
+  20% {
+    fill: black;
+  }
+  40% {
+    fill: #E17277;
+  }
+  60% {
+    fill: black;
+  }
+  80% {
+    fill: #E17277;
+  }
+  100% {
+    fill: black;
+  }
+}
+.traffic-lights__animation .traffic-lights__red {
+  -webkit-animation: redToGreen 3s ease-in infinite normal forwards;
+          animation: redToGreen 3s ease-in infinite normal forwards;
+  fill: black;
+}
+.traffic-lights__animation .traffic-lights__yellow {
+  fill: #F2D057;
+}
+.traffic-lights__animation .traffic-lights__green {
+  -webkit-animation: greenToRed 3s ease-in infinite normal forwards;
+          animation: greenToRed 3s ease-in infinite normal forwards;
+  fill: black;
+}
+.traffic-lights__animation *.animstop {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: content;
+  background-color: rgb(229, 234, 255);
+}

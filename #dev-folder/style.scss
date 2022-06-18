@@ -1,0 +1,161 @@
+$aside-bg: rgb(102, 116, 187);
+$content-bg: rgb(229, 234, 255);
+$size-space-content_menu: 70px;
+
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px;
+    color: white;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 24px;
+    font-style: normal;
+}
+
+/* Универсальные классы */
+.title {
+    font-family: 'Baloo Cyrillic', sans-serif;
+    font-size: 34px;
+    line-height: 28px;
+}
+
+.click-btn {
+}
+
+.hover-btn {
+}
+/* ...универсальные классы */
+
+.wrapper{
+    display: grid;
+    height: 100%;
+    grid-template-areas: "aside header"
+                        "aside content";
+    grid-template-columns: 240px auto;
+    grid-template-rows: 90px auto;
+}
+
+.header{
+    grid-area: header;
+    background-color: rgb(176, 33, 33);
+}
+
+.aside{
+    grid-area: aside;
+    background-color: $aside-bg;
+    padding: 35px 30px 100px;
+}
+
+.aside-title, .menu-text{
+    color: white;
+}
+
+.aside-title {
+    text-align: center;
+    cursor: cell;
+    user-select: none;
+    transition: color .2s ease-in;
+}
+.menu{
+    *:not(:last-child){
+        margin-bottom: 5px;
+    }
+    .menu-elem {
+        display: flex;
+        border-radius: 13px;
+        overflow: hidden;
+        padding: 16px;
+        transition: all .05s ease-in;
+        &:hover{
+            background: rgba(133, 144, 201, 0.5);
+            box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+        }
+        &:active{
+            transform: scale(0.95);
+        }
+        &.active{
+            background: rgb(133, 144, 201);
+            box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+        }
+        .menu-icon {
+            height: auto;
+            align-self: flex-start;
+            img{
+                width: 25px;
+                height: auto;
+                margin-right: 28px;
+            }
+        }
+        .menu-text {
+            font-family: 'Century Gothic', sans-serif;
+            font-size: 16px;
+            align-self: center;
+        }
+    }
+}
+
+$emptylights: black;
+$greenlights: #7CDAAF;
+$redlights: #E17277;
+@keyframes greenToRed {
+    0%{
+        fill: $greenlights;
+    }
+    20%{
+        fill: $emptylights;
+    }
+    40%{
+        fill: $greenlights;
+    }
+    60%{
+        fill: $emptylights;
+    }
+    80%{
+        fill: $greenlights;
+    }
+    100%{
+        fill: $emptylights;
+    }
+}
+@keyframes redToGreen {
+    0%{
+        fill: $redlights;
+    }
+    20%{
+        fill: $emptylights;
+    }
+    40%{
+        fill: $redlights;
+    }
+    60%{
+        fill: $emptylights;
+    }
+    80%{
+        fill: $redlights;
+    }
+    100%{
+        fill: $emptylights;
+    }
+}
+.traffic-lights__animation{
+    .traffic-lights__red {
+        animation: redToGreen 3s ease-in infinite normal forwards;
+        fill:$emptylights;
+    }
+    .traffic-lights__yellow {
+        fill:#F2D057;
+    }
+    .traffic-lights__green {
+        animation: greenToRed 3s ease-in infinite normal forwards;
+        fill: $emptylights;
+    }
+    *.animstop{
+        animation: none;
+    }
+}
+
+.content{
+    grid-area: content;
+    background-color: $content-bg;
+}
