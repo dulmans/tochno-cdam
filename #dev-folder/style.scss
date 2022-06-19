@@ -95,65 +95,77 @@ body{
     }
 }
 
-$emptylights: black;
-$greenlights: #7CDAAF;
-$redlights: #E17277;
-@keyframes greenToRed {
-    0%{
-        fill: $greenlights;
+/* АНИМАЦИЯ СВЕТОФОРА В ASIDE-BAR */
+$emptylights: black; // Цвет негорящего светофора
+$redlights: #E17277; // Цвет красного сигнала
+$yellowlights: #F2D057; // Цвет желтого сигнала
+$greenlights: #7CDAAF; // Цвет зеленного сигнала
+$timeOneLooop: 15s; // Сколько секунд горит отдельно зеленный и красный сигналы светофора
+$timeYellowLights: 3s; // Сколько секунд идёт переключение сигналов (горит желтый)
+@keyframes greenLights {
+    0%, 40%{
+        fill: $greenlights
     }
-    20%{
+    41%{
         fill: $emptylights;
     }
-    40%{
+    43%{
         fill: $greenlights;
     }
-    60%{
+    45%{
         fill: $emptylights;
     }
-    80%{
+    46%{
         fill: $greenlights;
+    }
+    48%{
+        fill: $emptylights;
+    }
+    49%{
+        fill: $greenlights;
+    }
+    50%{
+        fill: $emptylights;
+    }
+}
+
+@keyframes redLights {
+    0%, 49%{
+        fill: $emptylights;
+    }
+    50%, 99%{
+        fill: $redlights;
     }
     100%{
         fill: $emptylights;
     }
 }
-@keyframes redToGreen {
-    0%{
-        fill: $redlights;
-    }
-    20%{
+
+@keyframes yellowLights {
+    0%, 81%{
         fill: $emptylights;
     }
-    40%{
-        fill: $redlights;
-    }
-    60%{
-        fill: $emptylights;
-    }
-    80%{
-        fill: $redlights;
+    82%, 99%{
+        fill: $yellowlights;
     }
     100%{
         fill: $emptylights;
     }
 }
+
 .traffic-lights__animation{
     .traffic-lights__red {
-        animation: redToGreen 3s ease-in infinite normal forwards;
-        fill:$emptylights;
+        animation: redLights calc(($timeOneLooop + $timeYellowLights) * 2) ease-in infinite normal forwards;
     }
     .traffic-lights__yellow {
-        fill:#F2D057;
+        animation: yellowLights calc($timeOneLooop + $timeYellowLights) ease-in infinite normal forwards;
     }
     .traffic-lights__green {
-        animation: greenToRed 3s ease-in infinite normal forwards;
-        fill: $emptylights;
+        animation: greenLights calc(($timeOneLooop + $timeYellowLights) * 2) ease-in infinite normal forwards;
     }
-    *.animstop{
-        animation: none;
-    }
+    .traffic-lights__red, .traffic-lights__yellow, .traffic-lights__green{fill:$emptylights;}
 }
+/* ..анимация светофора в aside-bar */
 
 .content{
     grid-area: content;

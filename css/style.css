@@ -104,105 +104,120 @@ body {
       align-self: center;
 }
 
-@-webkit-keyframes greenToRed {
-  0% {
+/* АНИМАЦИЯ СВЕТОФОРА В ASIDE-BAR */
+@-webkit-keyframes greenLights {
+  0%, 40% {
     fill: #7CDAAF;
   }
-  20% {
+  41% {
     fill: black;
   }
-  40% {
+  43% {
     fill: #7CDAAF;
   }
-  60% {
+  45% {
     fill: black;
   }
-  80% {
+  46% {
     fill: #7CDAAF;
+  }
+  48% {
+    fill: black;
+  }
+  49% {
+    fill: #7CDAAF;
+  }
+  50% {
+    fill: black;
+  }
+}
+@keyframes greenLights {
+  0%, 40% {
+    fill: #7CDAAF;
+  }
+  41% {
+    fill: black;
+  }
+  43% {
+    fill: #7CDAAF;
+  }
+  45% {
+    fill: black;
+  }
+  46% {
+    fill: #7CDAAF;
+  }
+  48% {
+    fill: black;
+  }
+  49% {
+    fill: #7CDAAF;
+  }
+  50% {
+    fill: black;
+  }
+}
+@-webkit-keyframes redLights {
+  0%, 49% {
+    fill: black;
+  }
+  50%, 99% {
+    fill: #E17277;
   }
   100% {
     fill: black;
   }
 }
-
-@keyframes greenToRed {
-  0% {
-    fill: #7CDAAF;
-  }
-  20% {
+@keyframes redLights {
+  0%, 49% {
     fill: black;
   }
-  40% {
-    fill: #7CDAAF;
-  }
-  60% {
-    fill: black;
-  }
-  80% {
-    fill: #7CDAAF;
-  }
-  100% {
-    fill: black;
-  }
-}
-@-webkit-keyframes redToGreen {
-  0% {
-    fill: #E17277;
-  }
-  20% {
-    fill: black;
-  }
-  40% {
-    fill: #E17277;
-  }
-  60% {
-    fill: black;
-  }
-  80% {
+  50%, 99% {
     fill: #E17277;
   }
   100% {
     fill: black;
   }
 }
-@keyframes redToGreen {
-  0% {
-    fill: #E17277;
-  }
-  20% {
+@-webkit-keyframes yellowLights {
+  0%, 81% {
     fill: black;
   }
-  40% {
-    fill: #E17277;
+  82%, 99% {
+    fill: #F2D057;
   }
-  60% {
+  100% {
     fill: black;
   }
-  80% {
-    fill: #E17277;
+}
+@keyframes yellowLights {
+  0%, 81% {
+    fill: black;
+  }
+  82%, 99% {
+    fill: #F2D057;
   }
   100% {
     fill: black;
   }
 }
 .traffic-lights__animation .traffic-lights__red {
-  -webkit-animation: redToGreen 3s ease-in infinite normal forwards;
-          animation: redToGreen 3s ease-in infinite normal forwards;
-  fill: black;
+  -webkit-animation: redLights 36s ease-in infinite normal forwards;
+          animation: redLights 36s ease-in infinite normal forwards;
 }
 .traffic-lights__animation .traffic-lights__yellow {
-  fill: #F2D057;
+  -webkit-animation: yellowLights 18s ease-in infinite normal forwards;
+          animation: yellowLights 18s ease-in infinite normal forwards;
 }
 .traffic-lights__animation .traffic-lights__green {
-  -webkit-animation: greenToRed 3s ease-in infinite normal forwards;
-          animation: greenToRed 3s ease-in infinite normal forwards;
+  -webkit-animation: greenLights 36s ease-in infinite normal forwards;
+          animation: greenLights 36s ease-in infinite normal forwards;
+}
+.traffic-lights__animation .traffic-lights__red, .traffic-lights__animation .traffic-lights__yellow, .traffic-lights__animation .traffic-lights__green {
   fill: black;
 }
-.traffic-lights__animation *.animstop {
-  -webkit-animation: none;
-          animation: none;
-}
 
+/* ..анимация светофора в aside-bar */
 .content {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
