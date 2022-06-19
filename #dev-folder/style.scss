@@ -1,6 +1,13 @@
-$aside-bg: rgb(102, 116, 187);
-$content-bg: rgb(229, 234, 255);
+$aside-bg: rgb(102, 116, 187); // Цвет заднего фона ASIDE-бар
+$content-bg: rgb(229, 234, 255); // Цвет заднего фона Content секции
 $size-space-content_menu: 70px;
+/* Анимация светофора в aside-бар */
+$emptylights: black; // Цвет негорящего светофора
+$redlights: #E17277; // Цвет красного сигнала
+$yellowlights: #F2D057; // Цвет желтого сигнала
+$greenlights: #7CDAAF; // Цвет зеленного сигнала
+$timeOneLooop: 15s; // Сколько секунд горит отдельно зеленный и отдельно красный сигналы светофора
+$timeYellowLights: 3s; // Сколько секунд идёт переключение сигналов (горит желтый)
 
 
 body{
@@ -45,6 +52,9 @@ body{
     grid-area: aside;
     background-color: $aside-bg;
     padding: 35px 30px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .aside-title, .menu-text{
@@ -96,17 +106,11 @@ body{
 }
 
 /* АНИМАЦИЯ СВЕТОФОРА В ASIDE-BAR */
-$emptylights: black; // Цвет негорящего светофора
-$redlights: #E17277; // Цвет красного сигнала
-$yellowlights: #F2D057; // Цвет желтого сигнала
-$greenlights: #7CDAAF; // Цвет зеленного сигнала
-$timeOneLooop: 15s; // Сколько секунд горит отдельно зеленный и красный сигналы светофора
-$timeYellowLights: 3s; // Сколько секунд идёт переключение сигналов (горит желтый)
 @keyframes greenLights {
     0%, 40%{
         fill: $greenlights
     }
-    41%{
+    42%{
         fill: $emptylights;
     }
     43%{
@@ -154,11 +158,12 @@ $timeYellowLights: 3s; // Сколько секунд идёт переключ�
 }
 
 .traffic-lights__animation{
+
     .traffic-lights__red {
         animation: redLights calc(($timeOneLooop + $timeYellowLights) * 2) ease-in infinite normal forwards;
     }
     .traffic-lights__yellow {
-        animation: yellowLights calc($timeOneLooop + $timeYellowLights) ease-in infinite normal forwards;
+        animation: yellowLights calc($timeOneLooop + $timeYellowLights) ease-out infinite normal forwards;
     }
     .traffic-lights__green {
         animation: greenLights calc(($timeOneLooop + $timeYellowLights) * 2) ease-in infinite normal forwards;
