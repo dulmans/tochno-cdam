@@ -33,7 +33,212 @@ body {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: header;
-  background-color: rgb(176, 33, 33);
+  background: white;
+  position: relative;
+  z-index: -2;
+  overflow: hidden;
+}
+
+@-webkit-keyframes carTurnWheel {
+  0% {
+    -webkit-transform: skew(0deg);
+            transform: skew(0deg);
+  }
+  33% {
+    -webkit-transform: skew(4deg);
+            transform: skew(4deg);
+  }
+  66% {
+    -webkit-transform: skew(-4deg);
+            transform: skew(-4deg);
+  }
+  100% {
+    -webkit-transform: skew(0deg);
+            transform: skew(0deg);
+  }
+}
+
+@keyframes carTurnWheel {
+  0% {
+    -webkit-transform: skew(0deg);
+            transform: skew(0deg);
+  }
+  33% {
+    -webkit-transform: skew(4deg);
+            transform: skew(4deg);
+  }
+  66% {
+    -webkit-transform: skew(-4deg);
+            transform: skew(-4deg);
+  }
+  100% {
+    -webkit-transform: skew(0deg);
+            transform: skew(0deg);
+  }
+}
+@-webkit-keyframes carsMove {
+  0% {
+    -webkit-transform: translateX(-53%);
+            transform: translateX(-53%);
+  }
+  1% {
+    -webkit-transform: translateX(-53%);
+            transform: translateX(-53%);
+  }
+  40% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  55% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+  }
+  99% {
+    -webkit-transform: translateX(53%);
+            transform: translateX(53%);
+  }
+  100% {
+    -webkit-transform: scale(-1, -1);
+            transform: scale(-1, -1);
+  }
+}
+@keyframes carsMove {
+  0% {
+    -webkit-transform: translateX(-53%);
+            transform: translateX(-53%);
+  }
+  1% {
+    -webkit-transform: translateX(-53%);
+            transform: translateX(-53%);
+  }
+  40% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  55% {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+  }
+  99% {
+    -webkit-transform: translateX(53%);
+            transform: translateX(53%);
+  }
+  100% {
+    -webkit-transform: scale(-1, -1);
+            transform: scale(-1, -1);
+  }
+}
+.car-animation__icons {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+}
+.car-animation__icons .cars-animation__container {
+  width: 100%;
+  position: relative;
+  z-index: -1;
+}
+.car-animation__icons .cars-animation__container .car__icon {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  -webkit-animation: carsMove 10s ease infinite alternate running;
+          animation: carsMove 10s ease infinite alternate running;
+}
+.car-animation__icons .cars-animation__container .car__icon .car-wheel {
+  -webkit-animation: carTurnWheel 1s linear infinite normal running;
+          animation: carTurnWheel 1s linear infinite normal running;
+}
+
+.header__content {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(100% - 385px);
+  margin: 0 auto;
+}
+
+.header__notification {
+  margin-right: 50px;
+}
+
+/* Анимация дёргания звоночка уведомлений при условии, что имеется  1 непрочитанное */
+@-webkit-keyframes notificationActive {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+@keyframes notificationActive {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+.notification {
+  width: 25px;
+  height: 25px;
+  position: relative;
+}
+.notification.active {
+  -webkit-animation: notificationActive 1s linear infinite alternate running;
+          animation: notificationActive 1s linear infinite alternate running;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.notification.active::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(88, 189, 125);
+  top: -10px;
+}
+.notification img {
+  height: 100%;
+  width: 100%;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.circle-avatar {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .aside {
@@ -121,25 +326,25 @@ body {
     fill: #7CDAAF;
   }
   42% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   43% {
     fill: #7CDAAF;
   }
   45% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   46% {
     fill: #7CDAAF;
   }
   48% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   49% {
     fill: #7CDAAF;
   }
   50% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 @keyframes greenLights {
@@ -147,69 +352,69 @@ body {
     fill: #7CDAAF;
   }
   42% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   43% {
     fill: #7CDAAF;
   }
   45% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   46% {
     fill: #7CDAAF;
   }
   48% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   49% {
     fill: #7CDAAF;
   }
   50% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 @-webkit-keyframes redLights {
   0%, 49% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   50%, 99% {
     fill: #E17277;
   }
   100% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 @keyframes redLights {
   0%, 49% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   50%, 99% {
     fill: #E17277;
   }
   100% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 @-webkit-keyframes yellowLights {
   0%, 81% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   82%, 99% {
     fill: #F2D057;
   }
   100% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 @keyframes yellowLights {
   0%, 81% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
   82%, 99% {
     fill: #F2D057;
   }
   100% {
-    fill: black;
+    fill: rgb(68, 62, 62);
   }
 }
 .traffic-lights__animation .traffic-lights__red {
@@ -225,7 +430,7 @@ body {
           animation: greenLights 36s ease-in infinite normal forwards;
 }
 .traffic-lights__animation .traffic-lights__red, .traffic-lights__animation .traffic-lights__yellow, .traffic-lights__animation .traffic-lights__green {
-  fill: black;
+  fill: rgb(68, 62, 62);
 }
 
 /* ..анимация светофора в aside-bar */

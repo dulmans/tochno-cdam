@@ -14,3 +14,10 @@
         }, 3000);
     })
 }
+
+/* {
+    const carsAnimElem = document.querySelectorAll('.car-animation__icons > *');
+    carsAnimElem.forEach(elem => {
+        elem.style.cssText = `animation: `;
+    });
+} */

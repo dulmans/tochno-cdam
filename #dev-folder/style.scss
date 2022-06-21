@@ -1,13 +1,14 @@
 $aside-bg: rgb(102, 116, 187); // Цвет заднего фона ASIDE-бар
 $content-bg: rgb(229, 234, 255); // Цвет заднего фона Content секции
-$size-space-content_menu: 70px;
+$indent-content: 55px; // Отсуп контента от границ экрана от каждого края
 /* Анимация светофора в aside-бар */
-$emptylights: black; // Цвет негорящего светофора
+$emptylights: rgb(68, 62, 62); // Цвет негорящего светофора
 $redlights: #E17277; // Цвет красного сигнала
 $yellowlights: #F2D057; // Цвет желтого сигнала
 $greenlights: #7CDAAF; // Цвет зеленного сигнала
 $timeOneLooop: 15s; // Сколько секунд горит отдельно зеленный и отдельно красный сигналы светофора
 $timeYellowLights: 3s; // Сколько секунд идёт переключение сигналов (горит желтый)
+
 
 
 body{
@@ -26,12 +27,6 @@ body{
     font-size: 34px;
     line-height: 28px;
 }
-
-.click-btn {
-}
-
-.hover-btn {
-}
 /* ...универсальные классы */
 
 .wrapper{
@@ -45,7 +40,129 @@ body{
 
 .header{
     grid-area: header;
-    background-color: rgb(176, 33, 33);
+    background: white;
+    position: relative;
+    z-index: -2;
+    overflow: hidden;
+}
+
+@keyframes carTurnWheel {
+    0%{
+        transform: skew(0deg);
+    }
+    33%{
+        transform: skew(4deg);
+    }
+    66%{
+        transform: skew(-4deg);
+    }
+    100%{
+        transform: skew(0deg);
+    }
+}
+
+@keyframes carsMove {
+    0%{
+        transform: translateX(-53%);
+    }
+    1%{
+        transform: translateX(-53%);
+    }
+    40%{
+        transform: translateX(0%);
+        animation-play-state: paused;
+    }
+    55%{
+        animation-play-state: running;
+    }
+    99%{
+        transform: translateX(53%);
+    }
+    100%{
+        transform: scale(-1,-1);
+    }
+}
+
+.car-animation__icons{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    .cars-animation__container{
+        width: 100%;
+        position: relative;
+        z-index: -1;
+        .car__icon{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            animation: carsMove 10s ease infinite alternate running;
+            .car-wheel{
+                animation: carTurnWheel 1s linear infinite normal running;
+            }
+        }
+    }
+}
+
+.header__content {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: calc(100% - ($indent-content * 7));
+    margin: 0 auto;
+}
+
+.header__notification{
+    margin-right: 50px;
+}
+
+/* Анимация дёргания звоночка уведомлений при условии, что имеется  1 непрочитанное */
+@keyframes notificationActive {
+    0% {
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(-10deg);
+    }
+}
+
+.notification {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    &.active{
+        animation: notificationActive 1s linear infinite alternate running;
+        transform: rotate(0deg);
+        &::after{
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgb(88, 189, 125);
+            top: -10px;
+        }
+    }
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.user-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.circle-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .aside{
