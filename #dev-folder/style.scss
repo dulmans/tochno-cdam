@@ -21,13 +21,64 @@ body{
     font-style: normal;
 }
 
-/* Универсальные классы */
 .title {
     font-family: 'Baloo Cyrillic', sans-serif;
     font-size: 34px;
+    font-weight: 700;
     line-height: 28px;
+    letter-spacing: 2px;
 }
-/* ...универсальные классы */
+
+.text-box{
+    border: 2px solid #EEEEEE;
+    border-radius: 4px;
+    padding: 26px;
+}
+.button {
+    $button-border: 2px black; // ширина бордера и его цвет
+    $button-bg-position: .5rem; // размер плавающего элемента в кнопке
+
+    display: inline-block;
+    font-weight: 600;
+    border: solid $button-border;
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    letter-spacing: .08rem;
+    background-color: white;
+    border-radius: .35rem;
+    position: relative;
+    transition: all .08s linear;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $aside-bg;
+        z-index: -1;
+        border-radius: .35rem;
+        border: solid $button-border;
+        transition: all .3s ease-in-out;
+        border: 0;
+        box-shadow: 0px 0px 0px $button-border;
+        top: $button-bg-position;
+        left: $button-bg-position;
+    }
+    &:hover {
+        &::after {
+            top: -$button-bg-position;
+            left: -$button-bg-position;
+            width: calc(100% + $button-bg-position * 2);
+            height: calc(100% + $button-bg-position * 2);
+        }
+    }
+    &:active{
+        background-color: $aside-bg;
+        border-color:  $aside-bg;
+        color:  $aside-bg;
+    }
+}
 
 .wrapper{
     display: grid;
@@ -44,63 +95,6 @@ body{
     position: relative;
     z-index: -2;
     overflow: hidden;
-}
-
-@keyframes carTurnWheel {
-    0%{
-        transform: skew(0deg);
-    }
-    33%{
-        transform: skew(4deg);
-    }
-    66%{
-        transform: skew(-4deg);
-    }
-    100%{
-        transform: skew(0deg);
-    }
-}
-
-@keyframes carsMove {
-    0%{
-        transform: translateX(-53%);
-    }
-    1%{
-        transform: translateX(-53%);
-    }
-    40%{
-        transform: translateX(0%);
-        animation-play-state: paused;
-    }
-    55%{
-        animation-play-state: running;
-    }
-    99%{
-        transform: translateX(53%);
-    }
-    100%{
-        transform: scale(-1,-1);
-    }
-}
-
-.car-animation__icons{
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-    .cars-animation__container{
-        width: 100%;
-        position: relative;
-        z-index: -1;
-        .car__icon{
-            width: 100%;
-            height: 50px;
-            position: absolute;
-            animation: carsMove 10s ease infinite alternate running;
-            .car-wheel{
-                animation: carTurnWheel 1s linear infinite normal running;
-            }
-        }
-    }
 }
 
 .header__content {
@@ -224,58 +218,33 @@ body{
 
 /* АНИМАЦИЯ СВЕТОФОРА В ASIDE-BAR */
 @keyframes greenLights {
-    0%, 40%{
+    0%, 40%, 43%, 46%, 49%{
         fill: $greenlights
     }
-    42%{
-        fill: $emptylights;
-    }
-    43%{
-        fill: $greenlights;
-    }
-    45%{
-        fill: $emptylights;
-    }
-    46%{
-        fill: $greenlights;
-    }
-    48%{
-        fill: $emptylights;
-    }
-    49%{
-        fill: $greenlights;
-    }
-    50%{
+    42%, 45%, 48%, 50%{
         fill: $emptylights;
     }
 }
 
 @keyframes redLights {
-    0%, 49%{
+    0%, 49%, 100%{
         fill: $emptylights;
     }
     50%, 99%{
         fill: $redlights;
     }
-    100%{
-        fill: $emptylights;
-    }
 }
 
 @keyframes yellowLights {
-    0%, 81%{
+    0%, 81%, 100%{
         fill: $emptylights;
     }
     82%, 99%{
         fill: $yellowlights;
     }
-    100%{
-        fill: $emptylights;
-    }
 }
 
 .traffic-lights__animation{
-
     .traffic-lights__red {
         animation: redLights calc(($timeOneLooop + $timeYellowLights) * 2) ease-in infinite normal forwards;
     }
@@ -292,4 +261,49 @@ body{
 .content{
     grid-area: content;
     background-color: $content-bg;
+    position: relative;
+}
+
+.content-container {
+    max-width: calc(100% - ($indent-content * 2));
+    margin: calc($indent-content - 20px) auto;
+}
+
+.content-box__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.content-box {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 26px;
+}
+
+.home-page__content-box{
+    color: $aside-bg;
+    font-family: 'Century Gothic', sans-serif;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 0;
+}
+
+.home-page__text-box{
+    margin: 30px 0;
+}
+
+.content__name-site {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.content__paragraph {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: black;
+    font-size: 16px;
 }

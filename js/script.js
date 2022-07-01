@@ -1,5 +1,6 @@
-/* Интерактив клика на aside title (название сайта) */
-{
+const contentHTMLElem = document.querySelector('.content');
+
+{ /* Интерактив клика на aside title (название сайта) */
     let update = 0;
     const elem = document.querySelector('.onclickevent-color');
     elem.addEventListener('click', () => {
@@ -15,9 +16,6 @@
     })
 }
 
-/* {
-    const carsAnimElem = document.querySelectorAll('.car-animation__icons > *');
-    carsAnimElem.forEach(elem => {
-        elem.style.cssText = `animation: `;
-    });
-} */
+function uploadHomePage () {
+    contentHTMLElem.innerHTML = loadPage('home');
+}
