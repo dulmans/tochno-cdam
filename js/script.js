@@ -1,4 +1,10 @@
-const contentHTMLElem = document.querySelector('.content');
+const contentHTMLElem = document.getElementById('content-elem');
+let uploadHTMLElem = (doStyle) => {
+    const uploadElem = document.getElementById('upload');
+    uploadElem.style.opacity = doStyle;
+    uploadElem.style.zIndex = doStyle === 1 ? 999 : -999;
+}
+uploadHomePage ();
 
 { /* Интерактив клика на aside title (название сайта) */
     let update = 0;
@@ -17,5 +23,7 @@ const contentHTMLElem = document.querySelector('.content');
 }
 
 function uploadHomePage () {
+    uploadHTMLElem(1);
     contentHTMLElem.innerHTML = loadPage('home');
+    uploadHTMLElem(0);
 }
