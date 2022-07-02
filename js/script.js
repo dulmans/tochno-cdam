@@ -1,5 +1,5 @@
 const contentHTMLElem = document.getElementById('content-elem');
-let uploadHTMLElem = (doStyle) => {
+let uploadHTMLElem = (doStyle) => { /* Функциональное выражение, регулирующие отображение экрана загрузки */
     const uploadElem = document.getElementById('upload');
     uploadElem.style.opacity = doStyle;
     uploadElem.style.zIndex = doStyle === 1 ? 999 : -999;
@@ -22,8 +22,42 @@ uploadHomePage ();
     })
 }
 
-function uploadHomePage () {
+function uploadHomePage () { /* Загрузка главной страницы */
     uploadHTMLElem(1);
+    switchMenuActiveBlock('home')
     contentHTMLElem.innerHTML = loadPage('home');
     uploadHTMLElem(0);
+}
+
+function uploadTrainPage () { /* Загрузка страницы тренажера */
+    uploadHTMLElem(1);
+    switchMenuActiveBlock('train')
+    contentHTMLElem.innerHTML = loadPage('home');
+    uploadHTMLElem(0);
+}
+
+function uploadStatsPage () { /* Загрузка страницы с статистикой */
+    uploadHTMLElem(1);
+    switchMenuActiveBlock('stats')
+    contentHTMLElem.innerHTML = loadPage('home');
+    uploadHTMLElem(0);
+}
+
+function uploadListQuizPage () { /* Загрузка страницы с списком вопросов */
+    uploadHTMLElem(1);
+    switchMenuActiveBlock('list-que')
+    contentHTMLElem.innerHTML = loadPage('home');
+    uploadHTMLElem(0);
+}
+
+function switchMenuActiveBlock (activeElem){ /* Функция, которая меняет статусы активности у пунктов меню */
+    let menuElems = document.querySelectorAll('.menu-elem');
+    for(let i = 0; i < menuElems.length; i++){
+        if(menuElems[i].dataset.menu === activeElem){
+            menuElems.forEach(menuElem => menuElem.classList.remove('active'));
+            menuElems[i].classList.add('active');
+            return;
+        }
+    }
+    throw new Error('передано неверное значение идентификатора пункта меню')
 }

@@ -36,19 +36,19 @@
         <aside class="aside">
             <h1 class="aside-title title onclickevent-color">Точно сдам.ru</h1>
             <nav class="menu">
-                <a href="#" class="menu-elem active">
+                <a href="#" class="menu-elem active" data-menu="home" onclick="uploadHomePage()">
                     <div class="menu-icon"><img src="img/menu-icons/home.svg" alt="Иконка Главная"></div>
                     <span class="menu-text">Главная</span>
                 </a>
-                <a href="#" class="menu-elem">
+                <a href="#" class="menu-elem" data-menu="train" onclick="uploadTrainPage()">
                     <div class="menu-icon"><img src="img/menu-icons/train.svg" alt="Иконка Тренажер"></div>
                     <span class="menu-text">Тренажер</span>
                 </a>
-                <a href="#" class="menu-elem">
+                <a href="#" class="menu-elem" data-menu="stats" onclick="uploadStatsPage()">
                     <div class="menu-icon"><img src="img/menu-icons/stats.svg" alt="Иконка Моя статистика"></div>
                     <span class="menu-text">Моя статистика</span>
                 </a>
-                <a href="#" class="menu-elem">
+                <a href="#" class="menu-elem" data-menu="list-que" onclick="uploadListQuizPage()">
                     <div class="menu-icon"><img src="img/menu-icons/list-que.svg" alt="Иконка Список вопросов"></div>
                     <span class="menu-text">Список вопросов</span>
                 </a>
@@ -110,8 +110,8 @@
     </div>
 
     <script type="module" src="js/json.js"></script> <!-- Подключение JSON-файлов -->
-    <script src="page.js"></script>
-    <script type="text/javascript" src="js/smoothly.js"></script>
+    <script src="page.js"></script> <!-- Подключение функции загрузки контента в режиме реального времени -->
+    <!-- <script type="text/javascript" src="js/smoothly.js"></script> -->
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

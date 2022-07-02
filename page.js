@@ -10,7 +10,7 @@ function loadPage (namePage) {
                         <p class="content__paragraph paragraph">На нашем портале вы сможете тренироваться в решении билетов ГИБДД. <br/> Каждый раз вопросы генерируются согласно регламенту ГИБДД. <br/> То есть, наш тренажер полностью симулирует программу, в которой вы будете сдавать экзамен в ГАИ.</p>
                     </div>
                     <div>
-                        <button class="content__button button">Перейти в тренажер</button>
+                        <button class="content__button button" onclick="uploadTrainPage()">Перейти в тренажер</button>
                     </div>
                 </div>
             </div>
