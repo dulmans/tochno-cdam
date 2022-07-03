@@ -32,21 +32,21 @@ function uploadHomePage () { /* Загрузка главной страницы
 function uploadTrainPage () { /* Загрузка страницы тренажера */
     uploadHTMLElem(1);
     switchMenuActiveBlock('train')
-    contentHTMLElem.innerHTML = loadPage('home');
+    contentHTMLElem.innerHTML = loadPage('train');
     uploadHTMLElem(0);
 }
 
 function uploadStatsPage () { /* Загрузка страницы с статистикой */
     uploadHTMLElem(1);
     switchMenuActiveBlock('stats')
-    contentHTMLElem.innerHTML = loadPage('home');
+    contentHTMLElem.innerHTML = loadPage('stats');
     uploadHTMLElem(0);
 }
 
 function uploadListQuizPage () { /* Загрузка страницы с списком вопросов */
     uploadHTMLElem(1);
-    switchMenuActiveBlock('list-que')
-    contentHTMLElem.innerHTML = loadPage('home');
+    switchMenuActiveBlock('list-quiz')
+    contentHTMLElem.innerHTML = loadPage('list-quiz');
     uploadHTMLElem(0);
 }
 

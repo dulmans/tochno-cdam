@@ -15,7 +15,19 @@ function loadPage (namePage) {
                 </div>
             </div>
             `;
+        case 'train':
+            return `
+
+        `;
+        case 'stats':
+            return `
+
+        `;
+        case 'list-quiz':
+            return `
+
+        `;
         default:
-            throw new Error(`передано неверное значение загружаемой страницы`)
+            throw new Error(`передано неверное значение загружаемой страницы`);
     }
 }
