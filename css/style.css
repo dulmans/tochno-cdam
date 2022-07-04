@@ -55,42 +55,42 @@ body {
           animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
 }
 #upload .circle-1 {
-  background-color: #F61717;
+  background-color: rgb(246, 23, 23);
 }
 #upload .circle-1:before {
-  background-color: #F61717;
+  background-color: rgb(246, 23, 23);
   -webkit-animation-delay: 200ms;
           animation-delay: 200ms;
 }
 #upload .circle-2 {
-  background-color: #3182CE;
+  background-color: rgb(49, 130, 206);
 }
 #upload .circle-2:before {
-  background-color: #3182CE;
+  background-color: rgb(49, 130, 206);
   -webkit-animation-delay: 400ms;
           animation-delay: 400ms;
 }
 #upload .circle-3 {
-  background-color: #FFBF00;
+  background-color: rgb(255, 191, 0);
 }
 #upload .circle-3:before {
-  background-color: #FFBF00;
+  background-color: rgb(255, 191, 0);
   -webkit-animation-delay: 600ms;
           animation-delay: 600ms;
 }
 #upload .circle-4 {
-  background-color: #57D9AD;
+  background-color: rgb(87, 217, 173);
 }
 #upload .circle-4:before {
-  background-color: #57D9AD;
+  background-color: rgb(87, 217, 173);
   -webkit-animation-delay: 800ms;
           animation-delay: 800ms;
 }
 #upload .circle-5 {
-  background-color: #6674BB;
+  background-color: rgb(102, 116, 187);
 }
 #upload .circle-5:before {
-  background-color: #6674BB;
+  background-color: rgb(102, 116, 187);
   -webkit-animation-delay: 1000ms;
           animation-delay: 1000ms;
 }
@@ -369,7 +369,7 @@ body {
 /* АНИМАЦИЯ СВЕТОФОРА В ASIDE-BAR */
 @-webkit-keyframes greenLights {
   0%, 40%, 43%, 46%, 49% {
-    fill: #7CDAAF;
+    fill: rgb(124, 218, 175);
   }
   42%, 45%, 48%, 50% {
     fill: rgb(68, 62, 62);
@@ -377,7 +377,7 @@ body {
 }
 @keyframes greenLights {
   0%, 40%, 43%, 46%, 49% {
-    fill: #7CDAAF;
+    fill: rgb(124, 218, 175);
   }
   42%, 45%, 48%, 50% {
     fill: rgb(68, 62, 62);
@@ -388,7 +388,7 @@ body {
     fill: rgb(68, 62, 62);
   }
   50%, 99% {
-    fill: #E17277;
+    fill: rgb(225, 114, 119);
   }
 }
 @keyframes redLights {
@@ -396,7 +396,7 @@ body {
     fill: rgb(68, 62, 62);
   }
   50%, 99% {
-    fill: #E17277;
+    fill: rgb(225, 114, 119);
   }
 }
 @-webkit-keyframes yellowLights {
@@ -404,7 +404,7 @@ body {
     fill: rgb(68, 62, 62);
   }
   82%, 99% {
-    fill: #F2D057;
+    fill: rgb(242, 208, 87);
   }
 }
 @keyframes yellowLights {
@@ -412,7 +412,7 @@ body {
     fill: rgb(68, 62, 62);
   }
   82%, 99% {
-    fill: #F2D057;
+    fill: rgb(242, 208, 87);
   }
 }
 .traffic-lights__animation .traffic-lights__red {
