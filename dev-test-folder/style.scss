@@ -15,7 +15,7 @@ body {
   $def-transition: .15s ease all;
 
 
-  #select-app{
+  .select-app{
     width: 300px;
     font-family: 'Roboto Condensed', sans-serif;
   }
@@ -83,7 +83,7 @@ body {
 
   @keyframes icon-jump {
     0% {
-      transform: translateY(-15px);
+      transform: translateY(-25px);
       opacity: 0;
     }
     100% {
@@ -92,31 +92,18 @@ body {
     }
   }
 
-  .options{
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
+  .def-options{
+    position: relative;
     border-radius: $border-radius;
     width: 100%;
     transition: $def-transition;
     border: $border;
-    .option{
+    > .def-option{
       height: $height-block;
       width: 100%;
       position: relative;
       padding: 0 $def-padding;
       cursor: pointer;
-      &:hover{
-        .option-icon{
-          animation: icon-jump 0.3s ease 0.1s forwards;;
-          .icon-active{
-            fill: white !important;
-          }
-        }
-        .option-name{
-          color: white !important;
-        }
-      }
       .option__content-box{
         width: 100%;
         height: 100%;
@@ -150,6 +137,24 @@ body {
         z-index: -1;
       }
     }
+  }
+
+  .options{
+    opacity: 0;
+    pointer-events: none;
+    > .option{
+      &:hover{
+        .option-icon{
+          animation: icon-jump 0.3s ease 0.1s forwards;;
+          .icon-active{
+            fill: white !important;
+          }
+        }
+        .option-name{
+          color: white !important;
+        }
+      }
+    }
     .background-hover{
       position: absolute;
       top: 0;
@@ -169,13 +174,35 @@ body {
     }
   }
 
-  .options div:first-of-type:hover ~ .background-hover{
+  .def-options > div:first-of-type:hover ~ .background-hover{
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
   }
 
-  .options div:last-of-type:hover ~ .background-hover{
+  .def-options > div:last-of-type:hover ~ .background-hover{
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
+  }
+
+  .nested-box{
+    $nested-box-padding: 20px;
+    position: absolute;
+    left: 100%;
+    top: -#{$height-block + $nested-box-padding};
+    width: 60%;
+    > .nested-options__contain{
+      padding: $nested-box-padding;
+    }
+    .nested-options__contain{
+      display: none;
+      &.act{
+        display: block;
+      }
+    }
+  }
+
+  .nested-options > .nested-box{
+    top: 0;
+    width: 100%;
   }
   /* ВАУ */

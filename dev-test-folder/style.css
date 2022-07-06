@@ -4,7 +4,7 @@ body {
 }
 
 /* ВАУ */
-#select-app {
+.select-app {
   width: 300px;
   font-family: "Roboto Condensed", sans-serif;
 }
@@ -77,8 +77,8 @@ body {
 
 @-webkit-keyframes icon-jump {
   0% {
-    -webkit-transform: translateY(-15px);
-            transform: translateY(-15px);
+    -webkit-transform: translateY(-25px);
+            transform: translateY(-25px);
     opacity: 0;
   }
   100% {
@@ -90,8 +90,8 @@ body {
 
 @keyframes icon-jump {
   0% {
-    -webkit-transform: translateY(-15px);
-            transform: translateY(-15px);
+    -webkit-transform: translateY(-25px);
+            transform: translateY(-25px);
     opacity: 0;
   }
   100% {
@@ -100,34 +100,22 @@ body {
     opacity: 1;
   }
 }
-.options {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
+.def-options {
+  position: relative;
   border-radius: 4px;
   width: 100%;
   -webkit-transition: 0.15s ease all;
   transition: 0.15s ease all;
   border: 1px solid #e2eded;
 }
-.options .option {
+.def-options > .def-option {
   height: 42px;
   width: 100%;
   position: relative;
   padding: 0 10px;
   cursor: pointer;
 }
-.options .option:hover .option-icon {
-  -webkit-animation: icon-jump 0.3s ease 0.1s forwards;
-          animation: icon-jump 0.3s ease 0.1s forwards;
-}
-.options .option:hover .option-icon .icon-active {
-  fill: white !important;
-}
-.options .option:hover .option-name {
-  color: white !important;
-}
-.options .option .option__content-box {
+.def-options > .def-option .option__content-box {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -137,33 +125,48 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-.options .option .option__content-box .option-icon {
+.def-options > .def-option .option__content-box .option-icon {
   width: 23px;
   display: inline-block;
   margin-right: 10px;
 }
-.options .option .option__content-box .option-icon .icon-active {
+.def-options > .def-option .option__content-box .option-icon .icon-active {
   -webkit-transition: 0.15s ease all;
   transition: 0.15s ease all;
 }
-.options .option .option__content-box .option-icon svg {
+.def-options > .def-option .option__content-box .option-icon svg {
   width: 100%;
   height: auto;
 }
-.options .option .option__content-box .option-name {
+.def-options > .def-option .option__content-box .option-name {
   color: rgb(45, 54, 103);
   font-size: 16px;
   z-index: 3;
   -webkit-transition: 0.15s ease all;
   transition: 0.15s ease all;
 }
-.options .option .bg-white {
+.def-options > .def-option .bg-white {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: #fff;
   top: 0;
   z-index: -1;
+}
+
+.options {
+  opacity: 0;
+  pointer-events: none;
+}
+.options > .option:hover .option-icon {
+  -webkit-animation: icon-jump 0.3s ease 0.1s forwards;
+          animation: icon-jump 0.3s ease 0.1s forwards;
+}
+.options > .option:hover .option-icon .icon-active {
+  fill: white !important;
+}
+.options > .option:hover .option-name {
+  color: white !important;
 }
 .options .background-hover {
   position: absolute;
@@ -188,14 +191,35 @@ body {
   opacity: 1;
 }
 
-.options div:first-of-type:hover ~ .background-hover {
+.def-options > div:first-of-type:hover ~ .background-hover {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
 
-.options div:last-of-type:hover ~ .background-hover {
+.def-options > div:last-of-type:hover ~ .background-hover {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.nested-box {
+  position: absolute;
+  left: 100%;
+  top: -62px;
+  width: 60%;
+}
+.nested-box > .nested-options__contain {
+  padding: 20px;
+}
+.nested-box .nested-options__contain {
+  display: none;
+}
+.nested-box .nested-options__contain.act {
+  display: block;
+}
+
+.nested-options > .nested-box {
+  top: 0;
+  width: 100%;
 }
 
 /* ВАУ */
