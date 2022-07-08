@@ -6,13 +6,12 @@ body {
   $border-radius: 4px;
   $border: 1px solid #e2eded;
   $height-block: 42px;
-  $summ-option: 2;
-  $color-bg: rgb(128, 214, 250), rgb(255, 198, 27);
   $font-size: 16px;
   $option-text__color: rgb(45, 54, 103);
   $width-icons: 23px;
   $def-padding: 10px;
   $def-transition: .15s ease all;
+  $nested-box-padding: 20px;
 
 
   .select-app{
@@ -25,6 +24,18 @@ body {
     overflow: hidden;
     max-width: 85%;
     white-space: nowrap;
+  }
+
+  .title-icons{
+    width: $width-icons;
+    display: inline-block;
+    opacity: .4;
+    transition: $def-transition;
+    svg{
+      fill: $option-text__color;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .form-input{
@@ -68,17 +79,6 @@ body {
       line-height: 1;
       opacity: .5;
     }
-    .title-icons--updown{
-      width: $width-icons;
-      display: inline-block;
-      opacity: .4;
-      transition: $def-transition;
-      svg{
-        fill: $option-text__color;
-        width: 100%;
-        height: auto;
-      }
-    }
   }
 
   @keyframes icon-jump {
@@ -113,6 +113,8 @@ body {
           width: $width-icons;
           display: inline-block;
           margin-right: $def-padding;
+          color: rgb(255, 198, 27);
+          font-size: 1.23em;
           .icon-active{
             transition: $def-transition;
           }
@@ -132,9 +134,23 @@ body {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #fff;;
+        background-color: #fff;
         top: 0;
         z-index: -1;
+      }
+
+      &:hover{
+        > .option__content-box, > .nested-item__content-container .option__content-box{
+          .option-icon{
+            animation: icon-jump 0.3s ease 0.1s forwards;;
+            .icon-active{
+              fill: white !important;
+            }
+          }
+          .option-name{
+            color: white !important;
+          }
+        }
       }
     }
   }
@@ -142,19 +158,6 @@ body {
   .options{
     opacity: 0;
     pointer-events: none;
-    > .option{
-      &:hover{
-        .option-icon{
-          animation: icon-jump 0.3s ease 0.1s forwards;;
-          .icon-active{
-            fill: white !important;
-          }
-        }
-        .option-name{
-          color: white !important;
-        }
-      }
-    }
     .background-hover{
       position: absolute;
       top: 0;
@@ -163,14 +166,6 @@ body {
       opacity: 0;
       transition: .3s ease all;
       z-index: -1;
-    }
-  }
-
-  @for $i from 1 through $summ-option {
-    .options .option:nth-of-type(#{$i}):hover ~ .background-hover {
-        background-color: nth($color-bg, $i);
-        top: $height-block * ($i - 1);
-        opacity: 1;
     }
   }
 
@@ -185,24 +180,48 @@ body {
   }
 
   .nested-box{
-    $nested-box-padding: 20px;
+    display: none;
     position: absolute;
     left: 100%;
-    top: -#{$height-block + $nested-box-padding};
     width: 60%;
-    > .nested-options__contain{
-      padding: $nested-box-padding;
+    padding-left: $nested-box-padding;
+    overflow: auto;
+
+    scrollbar-color: #d4aa70 #e4e4e4;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 20px;
     }
-    .nested-options__contain{
-      display: none;
-      &.act{
-        display: block;
-      }
+    &::-webkit-scrollbar-track {
+      background-color: #e4e4e4;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      border: 5px solid transparent;
+      background-clip: content-box;
+      background-color: rgb(102, 116, 187);;
     }
   }
 
-  .nested-options > .nested-box{
-    top: 0;
-    width: 100%;
+  .nested-item{
+    &:hover > .nested-box{
+      display: block;
+    }
+    .nested-item__content-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      & > .option__content-box{
+        margin-right: -#{$width-icons};
+      }
+      & > .title-icons--leftright{
+        transform: rotate(90deg);
+      }
+    }
+    &:hover > .nested-item__content-container .title-icons--leftright{
+      opacity: 1;
+    }
   }
   /* ВАУ */
